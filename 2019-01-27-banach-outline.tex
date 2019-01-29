@@ -1,0 +1,32 @@
+(Directional derivatives) Consider a map $f \colon U \to F$ from open $U$ in $E$, choose a base point [$a \in U$], and a vector [$v \in E \setminus \{0\}$]. Because $U$ is open, there's an $\epsilon > 0$ such that [$a +tv \in U$ for all $t \in (-\epsilon, \epsilon)$]. We dub the [directional derivative of $f$ at $a$ in the $v$ direction], denoted $\partial_v f(a)$ to be [$$\frac{d}{dt} f(a + tv)\lvert_{t=0}$$] or equivalently [$$\lim_{t \to 0 } \frac{f(a + tv) - f(a)}{t}.$$]
+
+If $E = \RR^n$, the derivatives in the direction of the coordinate
+axes are particularly important, for practical and historical reasons.
+\ldots{} We thus write $\partial_k$ or $\partial/\partial x^k$ for
+the derivatives in the direction of the standard basis vectors $e_k$
+for $k = 1, \ldots,n$.
+
+\textbf{Theorems for Euclidean space.}
+
+\begin{enumerate}
+\item
+  Suppose $E = \RR^n$ and $f \colon U \to F$ is differentiable at
+  $a \in U$. Then
+  $$Df(a) h = \sum_{k =1}^n \partial_k f(a)h^k\quad \text{ for $h = (h^1, \ldots, h^k) \in \RR^n.$}$$
+\item
+  Suppose $E$ is a Banach space and
+  $f = (f^1, \ldots, f^m) \colon U \to \FF^m$ (an $m$ dimensional
+  $\FF$-vector space). The $f$ is differentiable at $a$ if and
+  only if all the coordinate functions $f^j$ are differentiable at
+  $a$. Then $$Df(a) = (Df^1(a), \ldots, Df^m(a)).$$
+\item
+  Suppose $U$ is open in $\RR^n$ and
+  $f = (f^1, \ldots, f^m) \colon U \to \RR^m$ is differentiable at
+  $a$. The matrix representation (in the standard basis) of the
+  derivative of $f$ is the Jacobi matrix of $f$:
+  $$[Df(a)] = [\partial_k f^j(a)].$$
+\end{enumerate}
+
+(Continuously differentiable) Let $U$ be open in a Banach space $E$ and say $f \colon U \to F$ is differentiable. When the derivative function $Df \colon U \to L(E, F)$ is continuous, we say that $f$ is \emph{continuously differentiable}, or of \emph{class $C^1$}. To define class $C^p$, we need to inductively define higher total derivatives. The $p$th derivative of $f$ is $D(D^{p-1}f)$, which is a map $$D^p f \colon U \to L\big(E, L(E, \ldots, L(E,F), \ldots )\big) \cong L^p(E, F) \quad \text{by isometry.}$$ A maps is said to be of \emph{class $C^p$} if its $k$th derivative exists $1 \le k \le p$.
+
+Let $p \ge 0$. If $U \xrightarrow{f} V \xrightarrow{g} V \xrightarrow G$ are maps of class $C^p$ between open sets of Banach spaces $E, F$, and $G$, then the composite $g \circ f$ is of class $C^p$.
