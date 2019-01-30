@@ -30,7 +30,7 @@ so either
 Both conclusions are contrary to our hypotheses, so it had better be that $\sA$ and $\sB$ are compatible! \qedsymbol
 
 
-### [@Lee03, number 1-6]
+### [@Lee03, number 1--6]
 
 \gvn Let $M$ be a nonempty topological manifold of dimension $n \ge 1$. 
 
@@ -60,7 +60,9 @@ step of construction | justification
 
 I claim $(V, \psi_s)$ is *compatible* with any other chart $(V', \psi')$ from the atlas constructed in step 10. Why? Because $V \cap V'$ does not contain $p$, whence the transition map $\psi' \circ\psi_s^{-1}$ where $$\psi_s(V \cap V') \xleftarrow{\psi_s} V \cap V' \xrightarrow{\psi'} \psi'(V \cap V')$$ is a diffeomorphism. Yet, for distinct parameters $s, t \in \RR^+ \setminus\{1\}$, the charts $(V, \psi_s)$ and $(V, \psi_t)$ are *not compatible* with each other. Why? Because $p \in V$. The transition map $\psi_t \circ\psi_s^{-1}$, $$\hat{V} \xleftarrow{\psi_s} V \xrightarrow{\psi_t} \hat{V}$$ is not differentiable at $\psi_s(p)$. We conclude there's a unique smooth structure on the topological manifold $M$ for each value of the parameter $s \in \RR^+ \setminus\{1\}$. \qedsymbol
 
-### [@Lee03, number 1-7]
+\newpage
+
+### [@Lee03, number 1--7]
 
 \gvn Let $N$ denote the *north pole* $(0,\ldots, 0, 1) \in S^n \subset \RR^{n+1}$, and let $S$ denote the *south pole*. Define the *stereographic projection* $\sigma \colon S^n \setminus \{N\} \to \RR^n$ $$\sigma\left(x^1, \ldots, x^{n+1}\right) = \frac{(x^1, \ldots, x^n)}{1 - x^{n+1}}.$$ Let $\tilde{\sigma}(x) = -\sigma(-x)$ for $x \in S^n \setminus \{S\}$.
 
@@ -74,7 +76,9 @@ c. We compute the transition map $\tilde{\sigma} \circ \sigma^{-1}$ and verify t
 
 d. This smooth structure is the same as the one defined in Example 1.31 (spheres).
 
-### [@Lee03, number 1-8]
+\newpage
+
+### [@Lee03, number 1--8]
 
 \gvn By identifying $\RR^2$ with $\CC$, we can think of the unit circle $S^1$ as a subset of the complex plane. An *angle function* on a subset $U \subset S^1$ is a continuous map $\theta \colon U \to \RR$ such that $e^{i\theta(z)} = z$ for all $z \in U$. 
 
@@ -82,5 +86,7 @@ d. This smooth structure is the same as the one defined in Example 1.31 (spheres
 
 - There exists an angle function $\theta$ on an open subset $U \subset S^1$ if and only if $U \neq S^1$. 
 - For any such angle function, $(U, \theta)$ is a smooth coordinate chart for $S^1$ with its standard smooth structure.
+
+\newpage 
 
 ## References
