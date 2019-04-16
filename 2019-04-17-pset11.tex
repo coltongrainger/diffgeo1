@@ -1,0 +1,74 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{Math 6210}
+\psnum{11}
+\author{Colton Grainger}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+
+    \item 9-1. Suppose $M$ is a smooth manifold, $X$ is a vector field in $\X M$, and $\gamma$ is a maximum integral curve of $X$.
+    \begin{enumerate}
+        \item \textit{Either $\gamma$ is constant, $\gamma$ is injective, or $\gamma$ is periodic and nonconstant.}
+        \item \textit{If $\gamma$ is periodic and nonconstant, then there's a unique positive number $T$ (called the \term{period} of $\gamma$) such that $\gamma(t) = \gamma(t')$ if and only if $t-t' \in T\Z$.}
+        \item \textit{The image of $\gamma$ is an immersed submanifold of $M$, diffeomorphic to $\R$, $S^1$, or $\pt \approx \R^0$.}
+    \end{enumerate}
+
+\newcommand{\dfgp}[1]{\mathrm{Diff}\paren{#1}} 
+
+\item 9-7. Say $M$ is a connected smooth manifold. \textit{The group of diffeomorphisms $\dfgp M$ acts transitively on $M$.}
+    \begin{lem*}[]
+        Let $B \subset \R^n$ be an open unit ball. If $p,q \in B$, there is a compactly supported smooth vector field $X \in \X B$ whose flow $\theta$ satisfies $\theta_1(p) = q$.
+    \end{lem*}
+
+\item 9-10.  \textit{For each of the following vector fields, find smooth coordinates in a neighborhood of $\mqty[1 & 0]^t$ such that the given vector field is a coordinate vector field.}
+    % compute the flows! <ccg, 2019-04-16> %
+    
+    \begin{enumerate}
+        \item  $V = y \pdv{x} + x \pdv{y}$.
+        \item  $W = x \pdv{x} + 2y \pdv{y}$.
+        \item  $X = x \pdv{x} - y \pdv{y}$.
+        \item  $Y = x \pdv{y} + y \pdv{x}$.
+    \end{enumerate}
+
+\newcommand{\fake}[1]{\widetilde{#1}}
+\newcommand{\ldiff}[2]{\mathcal{L}_{#1}{#2}}
+
+\item 9-16. \textit{Exhibit smooth vector fields $V$, $\fake V$, and $W$ on $\R^2$ such that $V = \fake V = \pdv*{x}$ along the $x$-axis but $\ldiff V W \neq \ldiff {\fake V} W$ at the origin.}
+
+\begin{note}[]
+    This shows that it is necessary to know the vector field $V$ to compute $\ldiff V W$ at a point $p \in M$; it is not sufficient to just know the vector $V_p$, or even to know the values of $V$ along an integral curve of $V$.
+\end{note}
+
+
+\newcommand{\flow}[1]{{\scriptstyle #1}\mathfrak{fl}}
+\newcommand{\dom}[1]{{\scriptstyle #1}B}
+
+\item 9-18. Define vector fields $X, Y \in \X \R^2$ by 
+    \[
+        X = x \pdv{x} - y \pdv{y}, \quad Y = x \pdv{y} + y \pdv{x}.
+    \]
+
+    \begin{enumerate} 
+        \item \textit{Compute the flows $\flow X$ and $\flow Y$ of $X$ and $Y$.}
+        \item \textit{Find open intervals $\dom X$ and $\dom Y$ containing $0$ such that 
+            \[
+                \flow X _t \circ \flow Y _s  - \flow Y _s \circ \flow X _t \qq{is defined for all $\mqty[t & s]^t$ in $\dom X \times \dom Y$,}
+            \]
+ but nonzero at some time $\mqty[\bar{t} & \bar{s}]^t$.}
+    \end{enumerate}
+
+\item 9-19. Consider $M = \R^3 \setminus \{z\text{-axis}\}$, the open submanifold of $\R^3$ formed by removing the $z$-axis. Define $V, W \in \X M$ by 
+    \[
+        V = \pdv{x} - \frac{y}{x^2 + y^2} \pdv{y}, \quad W= \pdv{y} + \frac{x}{x^2 + y^2} \pdv{z},
+    \]
+    and let $\flow V$, $\flow W$ be the flows of $V$ and $W$, respectively. \textit{Then $V$ and $W$ commute, but (caveat!) there exist a point $p \in M$ and times $s,t \in \R$ such that
+    \[
+        \paren{\flow V _t \circ \flow W _s}  (p) - \paren{\flow W _s \circ \flow V _t}  (p) \qq{is defined and nonzero.}
+    \]}
+
+\end{enumerate}
+
+\end{document}
