@@ -1,0 +1,121 @@
+Last time, we defined covectors, cotangent vectors, and a basis for the cotangent space at t a point given a basis for the tangent space.
+
+Recall, if $(U, (x^{i}))$ is a coordinate chart, then we have a basis for $T_p M$ with $p \in U$ 
+\[
+    \pdv{x^1} \eval_p,
+    \ldots,
+    \pdv{x^n} \eval_p,
+\]
+with dual basis for $T^*_p M$
+\[
+    \d{x^1} \eval_p,
+    \ldots,
+    \d{x^n} \eval_p.
+\]
+
+\newcommand{\fake}[2]{\tilde{#1}^{#2}} 
+\begin{ex}[Transition functions]
+    Let $(\fake x i)$ be another local coordinate chart in a neighborhood of $p$. We know (by the chain rule) that 
+    \[
+        \pdv{x^i} \eval_p = \pdv{\fake x j}{x^i}(p) \pdv{\fake x j} \eval_p.
+    \]
+    Let $(\d \fake x j )$ denote the dual basis to $\paren{ \pdv{\fake x j} \eval_p }$.
+
+    Any $w \in T^*_pM$ can be written in terms of either basis $w = a_i \d x^i \eval_p = \fake a_j \d \fake x j \eval_p$. How are the $a_i$ and the $\fake a_j$ related? Evaluate $w$ on $\pdv{x^i} \eval_p$. 
+
+    \[
+    a_i = w\paren{\pdv{x^i} \eval_p} = w \paren{\pdv{\fake x j}{x^i}(p) \pdv{\fake x j} \eval_p }= \fake a_j \pdv{\fake x j}{x^i}(p)}.
+    \]
+
+    Compare this transition $a_i$ to $\fake a j$ to the change of basis on $T_pM$ with $\fake v j$  written in terms of a basis $v^i$.
+\end{ex}
+
+\begin{ex}[Basis covectors]
+    Let $w$ be a basis covector. Then $w = \d \fake x j$. Since, for any $\fake a_j$, we have 
+    \[
+        w = \fake a_j \d \fake x j \eval_p = a_i \d x^i \eval_p = \fake a_j \pdv{\fake x j}{x^i} (p) \d x^i\eval_p.
+    \]
+    Therefore \begin{equation}\d \fake x j \eval_p = \pdv{\fake x j}{x^i}(p) \d x^i \eval_p.\end{equation}
+\end{ex}
+
+The moral is that, we'd like to express old covectors in terms of the new covector basis, whereas with tangent vectors, the chain rule gives us a means (and hence a preference) to compute the \emph{new vectors} in terms of the \emph{old tangent vector basis}.
+
+\begin{defn}[Covector fields]
+    Let $M \in \Man^n$. The \term{cotangent bundle} of $M$ is the disjoint union
+   \[
+       T^*M = \coprod_{p \in M} T^*_p M.
+   \]
+    Given a local coordinate chart $(x^i)$ on $U \subset M$, the sections $\d x^i \colon U \to T^*M$ defined by 
+    \[
+        \d x^i (p) = \d x^i \eval_p \in T^*_p M
+    \]
+    are the coordinate covector fields on $M$. They give rise to natural coordinates for $T^*U$, defined by 
+    \begin{align}
+        \pi^{-1}(U) &=: T^* U \subset T^*M\\
+        \chi_i \d x^i \eval_p &\mapsto (x^1, \ldots, x^n, \xi_1, \ldots, \xi_n)$.
+    \end{align}
+\end{defn}
+
+\begin{defn}[Covector fields]
+    A global section of $T^*M$ is a \term{global covector field} (a.k.a., a differential $1$-form), and a local section of $T^*M$ is a \term{local covector field}.
+\end{defn}
+
+If $\omega \in \Gamma(T^*M)$ is a covector field, and $X \in \X M$ is a vector field, then we can define a scalar function $\omega(X) \colon M \to \R$ such that $\omega(X)(p) = \omega\eval_p(X_p)$. In local coordinates, if 
+\[
+    X = X^i \pdv{x^i}, \qand \omega = \xi_j \d x^j,
+\]
+then $\omega(X) = \sum_i \xi_i(x) X^i(x)$.
+
+\begin{defn}[Coframe fields]
+    A \term{local coframe field} on $U \subset M$ is an ordered $n$-tuple $(\epsilon^1, \dlots, \epsilon^n)$ of covector fields such that, for all $p \in U$, the evaluation of $(\epsilon^1, \dlots, \epsilon^n)$  at $p$ forms a basis for $T^*_p M$.
+
+    Suppose $(E^1, \ldots, E^n)$ is a frame field on $U \subset M$, then the \term{dual coframe field} $(\epsilon^1, \dlots, \epsilon^n)$ is defined by (the Krönecker deltas) condition
+    \[
+        \epsilon^i(E_j) = \delta^i_j.
+    \]
+    
+    We write $\X^* M$ for the smooth covector fields on $M$.
+\end{defn}
+
+Patrick asked if it's true that every $M \in \Man$ admits a smooth nonvanishing covector field. 
+
+\begin{todo}[]
+   Does each $M \in \Man$ admit such a smooth covector field? Give a counter example.
+\end{todo}
+
+\begin{defn}[Differential of a function]
+   Let $M \in \Man$ and $f \in C^\infty(M)$. The \term{differential of $f$} is the covector field $\d f$ on $M$ defined by, for all $\vec v \in T_p M$,
+   \[
+      \d f\eval_p (\vec v) = \vec v (f).
+   \]
+   (We've specified how $ \d f$ acts at each point, for each tangent vector.)
+\end{defn}
+
+In terms of local coordinates, $(x^i)$ on $M$, if we write $\vec v = v^i \pdv{x^i} \eval_p$ and $\d f \eval_p = a_j \d x^j \eval_p$, then 
+\begin{align}
+   \d f_p (\vec v) & = \vec v (f) = v^i \pdv{f}{x^i}(p)\\
+   \text{ but also } & = \paren{a_j \d x^j \eval_p} \paren{v^i \pdv{x^i} \eval_p} = \sum_i v^i a_i
+\end{align}
+Which implies $a_i = \pdv{f}{x^i}(p)$ and $\d f = \pdv{f}{x^i} \d x^i$.
+
+\begin{prop}[Differential coordinate $1$-forms]
+   We have $\d x^i = \d (x^i)$ for all $x^i$ coordinate functions of a chart $(U, (x^i))$ on a manifold $M$. That is, $\d x^i$ is the differential of $x^i \colon U \to \R$.
+\end{prop}
+
+\begin{note}[]
+   This proposition agrees with our notion of the differential of the map $f \colon M \to \R$ with the identification $\d f \colon T_p M \to T_{f(p)} \R \cong \R$. (Which matches up with the explanations given for $\d x$ in high school calculus.) We'd like a covector to represent an infinitesmal path (?). \TODO.
+\end{note}
+
+\begin{prop}[]
+   Let $\gamma \colon J \to M$ be a smooth curve, $f \in C^\times(M)$. Then the derivation of the function $f \circ \gamma \colon J \to \R$ is given by (the familiar evaluation)
+   \[
+      (f \circ \gamma) ' (t) = \d f_{\gamma(t)} (\gamma'(t)).
+   \]
+\end{prop}
+
+\begin{defn}[Pullbacks of covector fields]
+   Let $M \xrightarrow{F} N$ be a map in $\Man$, with $p$ a point of $M$. The differential $\d F_p \colon T_p M \to T_{F(p)} N$ has a dual linear map $\d F^*_p \colon T^*_{F(p)} \to T^*_p M$ called the \term{pullback map} by $F$ at $p$, or the \term{cotangent map} at $p$. It's characterized by the property that for all $\vec v \in T_p M$, and covectors $\omega \in T^*_{F(p)} N$,
+   \[
+      (\d F_p)^*(\omega)(\vec v) = \omega \paren{\d F_p(\vec v)}.
+   \]
+\end{defn}
