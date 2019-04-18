@@ -1,0 +1,150 @@
+Last time, we defined covectors, cotangent vectors, and a basis for the \term{cotangent space at a point}, given a basis of tangent vectors for the tangent space.
+
+That is, by choosing a coordinate chart $(U, (x^{i}))$ about a point $p \in U$, we have a basis for $T_p M$
+\[
+    \pdv{x^1} \eval_p,
+    \ldots,
+    \pdv{x^n} \eval_p,
+\]
+and therefore a dual basis for $T^*_p M$
+\[
+    \dd {x^1} \eval_p,
+    \ldots,
+    \dd {x^n} \eval_p.
+\]
+
+\newcommand{\fake}[2]{\tilde{#1}^{#2}} 
+
+\begin{ex}[Changing the cotangent basis]
+   \label{changingcotangent}
+    Let $(\fake x j)$ be another local coordinate chart in a neighborhood of $p$. Then
+    \[
+        \pdv{x^i} \eval_p = \sum^{n}_{j=1} \pdv{\fake x j}{x^i}(p) \pdv{\fake x j} \eval_p.
+    \]
+    Now let $\paren{ \dd \fake x j }$ be the dual basis to $\paren{ \pdv{\fake x j} \eval_p }$. Consider a cotangent vector $w \in T^*_pM$. Written in terms of both the original and the new cotangent bases, $w$ is expressed as
+    \begin{equation*}
+       w = \sum^{n}_{i=1} a_i \dd { x^i } \eval_p = \sum^{n}_{j=1} \tilde a_j \dd { \fake x j } \eval_p.
+    \end{equation*}
+    To determine the relation between the original basis representation $\mqty[a_i]$ and the new representation $\mqty[\tilde a_j]$, evaluate the covector $w$ at each tangent vector $\pdv{x^i} \eval_p$ in the original basis. Then
+    \begin{align*}
+       a_i &= w\paren{ \pdv{x^i} \eval_p} & \qq{because $\dd x^i \pdv{x^j} = \delta^i_j$} \\
+           &= w \paren{ \sum^{n}_{j=1} \pdv{\fake x j}{x^i}(p) \pdv{\fake x j} \eval_p } & \qq{by the chain rule}\\
+           &=  \sum^{n}_{j=1} \pdv{\fake x j}{x^i}(p) w \paren{ \pdv{\fake x j} \eval_p } & \qq{by linearity}\\
+           &= \sum^{n}_{j=1} \tilde a_j \pdv{\fake x j}{x^i}(p) & \qq{because $\dd { \fake x r } \pdv{\fake x j} = \delta^i_j$.} \\    \end{align*}
+\end{ex}
+
+\begin{todo}[]
+   Give a numerical representation of the change of basis map taking $\mqty[a_i]$ to $\mqty[\tilde a j]$. Compare this to the change of basis on $T_pM$ with $\fake v j$  written in terms of a basis $v^i$.
+\end{todo}
+
+We prefer to express old covectors in terms of a new covector basis. Whereas with tangent vectors, the chain rule gives us a means (and hence a preference) to express the new vectors in terms of the old tangent vector basis.
+
+\begin{ex}[Basis covectors]
+    Let $w$ be the cotangent vector in example \ref{changingcotangent}. Then 
+    \begin{equation}
+       \label{twoexpressions}
+        w = \sum^{n}_{j=1} \tilde a_j \dd { \fake x j } \eval_p = \sum^{n}_{i=1} a_i \dd { x^i } \eval_p  \qand 
+         w = \sum^{n}_{i,j = 1} \tilde a_j \pdv{\fake x j}{x^i} (p) \dd { x^i }\eval_p.
+    \end{equation}
+    
+    As the scalars $\mqty[\tilde a_j]$ range through $\R^n$, the relation in \eqref{twoexpressions} determines the representation of the new basis covector in terms of the old basis covectors:
+    \begin{equation}
+         \dd { \fake x j } \eval_p = \sum^{n}_{i=1} \pdv{\fake x j}{x^i}(p) \dd { x^i } \eval_p.
+    \end{equation}
+\end{ex}
+
+\begin{note}[]
+    We have to hurry on to define covector fields, in order to state Stokes' theorem by the end of the semester. So we're glossing over the theory of vector bundles.
+\end{note}
+
+\begin{defn}[Cotangent bundle]
+    Let $M \in \Man^n$. The \term{cotangent bundle} over $M$ is the disjoint union
+   \[
+       T^*M = \coprod_{p \in M} T^*_p M,
+   \]
+   with projection $\pi \colon T^* M \to M$ sending cotangent vectors $w_p \mapsto p$ onto $M$.
+\end{defn}
+
+\begin{prop}[] The cotangent bundle is a smooth vector bundle over $M$.
+\end{prop}
+\begin{proof}
+   By definitions, fiber over $p \in M$ is the cotangent vector space at $p$. We claim $\pi$ is a smooth projection with the fibers over $M$ varying smoothly.
+
+   Now consider a local coordinate chart $(x^i)$ on $U \subset M$. We will show that $U$ is a trivializing neighborhood for $\pi$. The coordinate cotangent vectors determine $n$ (local) sections back into the cotangent bundle (called \term{coordinate covector fields} on $M$). These are
+ \begin{equation}
+    \label{cotangentsections}
+     \dd { x^i } \colon U \to T^*U \qq{such that} \dd { x^i  }(p) = \dd { x^i  }\eval_p \in T^*_p M.
+ \end{equation}
+ The coordinate chart $(U, (x^i))$ then determines a chart for the open neighborhood $\pi^{-1}(U) = T^*U$. Each covector $w \in \pi^{-1}(U)$ is in the fiber of some $p \in U$, and can be expressed in terms of the cotangent basis at $p$
+    \[
+       w_p = \mqty[\xi_1 & \cdots & \xi_n] \mqty[\dd x^1\eval_p \\ \vdots \\ \dd x^n\eval_p].
+    \]
+    We'll define our chart $\pi^{-1}(U) \xrightarrow{\sim} U\times \R^n$ pointwise
+ \begin{equation*}
+     \sum^{n}_{i=1} \xi_i \dd { x^i  }\eval_p \mapsto (x^1, \ldots, x^n, \xi_1, \ldots, \xi_n).
+ \end{equation*}
+ Taking for granted that this correspondence is smooth, we have shown the atlas $\{U_i, \phi_i\}$ for $M$ induces a local trivialization of the cotangent bundle.
+\end{proof}
+
+\begin{defn}[Covector fields]
+    A global section of $T^*M$ is a \term{global covector field} (a.k.a., a differential $1$-form), and a local section of $T^*M$ is a \term{local covector field}.
+\end{defn}
+
+If $\omega \in \Gamma(T^*M)$ is a covector field, and $X \in \X M$ is a vector field, then we can define a scalar function $\omega(X) \colon M \to \R$ such that $\omega(X)(p) = \omega\eval_p(X_p)$. In local coordinates, 
+\[
+   \qq*{if} X = X^i \pdv{x^i}, \qand \omega = \xi_j \dd { x^j }, \qq{then} \omega(X) = \sum_i \xi_i(x) X^i(x).
+\]
+
+\begin{defn}[Coframe fields]
+    A \term{local coframe field} on $U \subset M$ is an ordered $n$-tuple $(\epsilon^1, \ldots, \epsilon^n)$ of covector fields such that, for all $p \in U$, the evaluation of $(\epsilon^1, \ldots, \epsilon^n)$  at $p$ forms a basis for $T^*_p M$.
+
+    Suppose $(E^1, \ldots, E^n)$ is a frame field on $U \subset M$, then the \term{dual coframe field} $(\epsilon^1, \ldots, \epsilon^n)$ is defined by (the Krönecker deltas) condition
+    \[
+        \epsilon^i(E_j) = \delta^i_j.
+    \]
+    
+    We write $\X^* M$ for the smooth covector fields on $M$.
+\end{defn}
+
+Patrick asked if it's true that every $M \in \Man$ admits a smooth nonvanishing covector field. 
+
+\begin{todo}[]
+   Does each $M \in \Man$ admit such a smooth covector field? Give a counter example.
+\end{todo}
+
+\begin{defn}[Differential of a function]
+   Let $M \in \Man$ and $f \in C^\infty(M)$. The \term{differential of $f$} is the covector field $\dd f$ on $M$ defined by, for all $\vec v \in T_p M$,
+   \[
+      \dd f \eval_p (\vec v) = \vec v (f).
+   \]
+   (We've specified how $ \dd f$ acts at each point, for each tangent vector.)
+\end{defn}
+
+In terms of local coordinates, $(x^i)$ on $M$, if we write $\vec v = v^i \pdv{x^i} \eval_p$ and $\dd f \eval_p = a_j \dd { x^j } \eval_p$, then 
+\begin{align}
+   \dd { f_p } (\vec v) & = \vec v (f) = v^i \pdv{f}{x^i}(p)\\
+   \text{ but also } & = \paren{a_j \dd { x^j } \eval_p} \paren{v^i \pdv{x^i} \eval_p} = \sum_i v^i a_i
+\end{align}
+Which implies $a_i = \pdv{f}{x^i}(p)$ and $\dd f = \pdv{f}{x^i} \dd { x^i }$.
+
+\begin{prop}[Differential coordinate $1$-forms]
+   We have shown $\dd { x^i } = \dd {(x^i)}$ for the coordinate functions $x^i$ of chart $(U, (x^i))$. That is, $\dd { x^i }$ is the differential of $x^i \colon U \to \R$.
+\end{prop}
+
+\begin{note}[]
+   This proposition agrees with our notion of the differential of the map $f \colon M \to \R$ with the identification $\dd f \colon T_p M \to T_{f(p)} \R \cong \R$. (Which matches up with the explanations given for $\dd x$ in high school calculus.) We'd like a covector to represent an infinitesimal path (?). \TODO.
+\end{note}
+
+\begin{prop}[]
+   Let $\gamma \colon J \to M$ be a smooth curve, $f \in C^\times(M)$. Then the derivation of the function $f \circ \gamma \colon J \to \R$ is given by (the familiar evaluation)
+   \[
+      (f \circ \gamma) ' (t) = \dd { f_{\gamma(t)} } (\gamma'(t)).
+   \]
+\end{prop}
+
+\begin{defn}[Pullbacks of covector fields]
+   Let $M \xrightarrow{F} N$ be a map in $\Man$, with $p$ a point of $M$. The differential $\dd { F_p } \colon T_p M \to T_{F(p)} N$ has a dual linear map $\dd { F^*_p } \colon T^*_{F(p)} \to T^*_p M$ called the \term{pullback map} by $F$ at $p$, or the \term{cotangent map} at $p$. It's characterized by the property that for all $\vec v \in T_p M$, and covectors $\omega \in T^*_{F(p)} N$,
+   \[
+      (\dd { F_p })^*(\omega)(\vec v) = \omega \paren{\dd { F_p }(\vec v)}.
+   \]
+\end{defn}
