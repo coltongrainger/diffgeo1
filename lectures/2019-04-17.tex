@@ -95,56 +95,65 @@ If $\omega \in \Gamma(T^*M)$ is a covector field, and $X \in \X M$ is a vector f
    \qq*{if} X = X^i \pdv{x^i}, \qand \omega = \xi_j \dd { x^j }, \qq{then} \omega(X) = \sum_i \xi_i(x) X^i(x).
 \]
 
-\begin{defn}[Coframe fields]
-    A \term{local coframe field} on $U \subset M$ is an ordered $n$-tuple $(\epsilon^1, \ldots, \epsilon^n)$ of covector fields such that, for all $p \in U$, the evaluation of $(\epsilon^1, \ldots, \epsilon^n)$  at $p$ forms a basis for $T^*_p M$.
-
-    Suppose $(E^1, \ldots, E^n)$ is a frame field on $U \subset M$, then the \term{dual coframe field} $(\epsilon^1, \ldots, \epsilon^n)$ is defined by (the Krönecker deltas) condition
-    \[
-        \epsilon^i(E_j) = \delta^i_j.
-    \]
-    
-    We write $\X^* M$ for the smooth covector fields on $M$.
-\end{defn}
-
-Patrick asked if it's true that every $M \in \Man$ admits a smooth nonvanishing covector field. 
-
-\begin{todo}[]
-   Does each $M \in \Man$ admit such a smooth covector field? Give a counter example.
-\end{todo}
-
-\begin{defn}[Differential of a function]
-   Let $M \in \Man$ and $f \in C^\infty(M)$. The \term{differential of $f$} is the covector field $\dd f$ on $M$ defined by, for all $\vec v \in T_p M$,
-   \[
-      \dd f \eval_p (\vec v) = \vec v (f).
-   \]
-   (We've specified how $ \dd f$ acts at each point, for each tangent vector.)
-\end{defn}
-
-In terms of local coordinates, $(x^i)$ on $M$, if we write $\vec v = v^i \pdv{x^i} \eval_p$ and $\dd f \eval_p = a_j \dd { x^j } \eval_p$, then 
-\begin{align}
-   \dd { f_p } (\vec v) & = \vec v (f) = v^i \pdv{f}{x^i}(p)\\
-   \text{ but also } & = \paren{a_j \dd { x^j } \eval_p} \paren{v^i \pdv{x^i} \eval_p} = \sum_i v^i a_i
-\end{align}
-Which implies $a_i = \pdv{f}{x^i}(p)$ and $\dd f = \pdv{f}{x^i} \dd { x^i }$.
-
-\begin{prop}[Differential coordinate $1$-forms]
-   We have shown $\dd { x^i } = \dd {(x^i)}$ for the coordinate functions $x^i$ of chart $(U, (x^i))$. That is, $\dd { x^i }$ is the differential of $x^i \colon U \to \R$.
-\end{prop}
-
-\begin{note}[]
-   This proposition agrees with our notion of the differential of the map $f \colon M \to \R$ with the identification $\dd f \colon T_p M \to T_{f(p)} \R \cong \R$. (Which matches up with the explanations given for $\dd x$ in high school calculus.) We'd like a covector to represent an infinitesimal path (?). \TODO.
-\end{note}
-
-\begin{prop}[]
-   Let $\gamma \colon J \to M$ be a smooth curve, $f \in C^\times(M)$. Then the derivation of the function $f \circ \gamma \colon J \to \R$ is given by (the familiar evaluation)
-   \[
-      (f \circ \gamma) ' (t) = \dd { f_{\gamma(t)} } (\gamma'(t)).
-   \]
-\end{prop}
-
 \begin{defn}[Pullbacks of covector fields]
    Let $M \xrightarrow{F} N$ be a map in $\Man$, with $p$ a point of $M$. The differential $\dd { F_p } \colon T_p M \to T_{F(p)} N$ has a dual linear map $\dd { F^*_p } \colon T^*_{F(p)} \to T^*_p M$ called the \term{pullback map} by $F$ at $p$, or the \term{cotangent map} at $p$. It's characterized by the property that for all $\vec v \in T_p M$, and covectors $\omega \in T^*_{F(p)} N$,
    \[
       (\dd { F_p })^*(\omega)(\vec v) = \omega \paren{\dd { F_p }(\vec v)}.
    \]
 \end{defn}
+
+\begin{defn}[Coframe fields]
+    A \term{local coframe field} on $U \subset M$ is an ordered $n$-tuple $(\epsilon^1, \ldots, \epsilon^n)$ of covector fields such that, for all $p \in U$, the evaluation of $(\epsilon^1, \ldots, \epsilon^n)$  at $p$ forms a basis for $T^*_p M$.
+
+    Suppose $(E^1, \ldots, E^n)$ is a frame field on $U \subset M$, then the \term{dual coframe field} $(\epsilon^1, \ldots, \epsilon^n)$ is defined by
+    \[
+        \epsilon^i(E_j) = \delta^i_j.
+    \]
+    
+We write $\X^* M$ for the \term{smooth covector fields} on $M$.
+\end{defn}
+
+\begin{todo}[] Does each smooth manifold $M$ admit a smooth covector field?\footnote{Patrick asked if it's true that every $M \in \Man$ admits a smooth nonvanishing covector field. I have no idea.}
+\end{todo}
+
+We proceed to ``discover'' differential $1$-forms.
+
+\begin{defn}[Differential of a scalar function]
+   Let $M \in \Man$ and $f \in C^\infty(M)$. The \term{differential of $f$} is the covector field $\dd f$ on $M$ defined by
+   \[
+      \dd f \eval_p (\vec v) = \vec v (f) \qq{for all $\vec v \in T_p M$.}
+   \]
+\end{defn}
+
+   We've specified how $ \dd f$ acts at each point, for each tangent vector. Doesn't this \emph{look} like a Krönecker pairing?
+
+   \begin{ex}[Coordinate representation of a differential]
+       Consider local coordinates $(x^i)$ on $M$. If we write $\vec v = \sum^{n}_{i=1} v^i \pdv{x^i} \eval_p$ and $\dd f \eval_p = \sum^{n}_{j=1 } a_j \dd { x^j } \eval_p$, then 
+       \begin{align*}
+          \sum^{n}_{i=1} v^i a_i &=  \paren{a_j \dd { x^j } \eval_p} \paren{v^i \pdv{x^i} \eval_p} \\
+                         &= \dd f \eval_p (\vec v)  \\
+                         &= \vec v \eval_p (f) \\
+                         & = \sum^{n}_{i=1} v^i \pdv{f}{x^i} \eval_p
+       \end{align*}
+       Varying the scalars $\mqty[v^1 & \cdots & v^n]^t$ for the tangent vector $\vec v$, we determine each scalar component \[a_i = \pdv{f}{x^i} \eval_p\] 
+       in the basis representation of $\dd f\eval_p$. Therefore the differential of $f$ in terms of local coordinates is  \[\dd f \eval_p= \pdv{f}{x^i} \dd { x^i } \eval_p.\]
+   \end{ex}
+
+\begin{remark}
+   We have also shown $\dd { x^i } = \dd {(x^i)}$ for the coordinate functions $x^i$ of chart $(U, (x^i))$. That is, $\dd { x^i }$ is the differential of $x^i \colon U \to \R$.
+\end{remark}
+
+   Defining the differential of a scalar function as an \term{evaluation} extends the notion of the ``differential'' given for $\dd x$ in high school calculus. The two concepts are the same for a function $f \colon M \to \R$ if we choose to make the identification $\dd f \colon T_p M \to T_{f(p)} \R \cong \R$. 
+
+
+\begin{prop}[]
+   Let $\gamma \colon J \to M$ be a smooth curve, $f \in C^\rimes(M)$. Then the differential of the function $f \circ \gamma \colon J \to \R$ is given by (the familiar evaluation)
+   \[
+      (f \circ \gamma) ' (t) = \dd { f_{\gamma(t)} } (\gamma'(t)).
+   \]
+\end{prop}
+
+\begin{todo}[]
+    Soft question: why should a covector represent an infinitesimal path? Can this be connected with local $1$-parameter group actions?
+\end{todo}
+
