@@ -1,0 +1,117 @@
+Covectors are just linear maps on vector spaces. 
+
+Last time, we defined  pullbacks of smooth vector fields. (They're not necessarily Krönecker pairings.) 
+
+\begin{note}[]
+   For a map $M \xrightarrow{F} N$, regardless of whether $F$ is surjective, injective, the pullback of $\omega \in \X^*(N)$ is always a smooth covector field on $M$. Much nicer than pushforwards! (Think about preimages as respecting set-theoretic operations.)
+\end{note}
+
+For $\omega \in \X^*(N)$, we denote the pullback via $F$ as $F^* \omega$. If we let $F^*(\vec v)$ denote $\dd{F_p} (\vec v)$, then $(F^* \omega)(\vec v) = \omega (F_*(\vec v))$.
+
+\begin{prop}[]
+    Let $M \xrightarrow{F} N$ be smooth, $\omega \in \X^*(N)$, and $u \in C^\times(N)$. Then both:
+    \begin{enumerate}
+        \item $F^*(uw) = (u \circ F)F^* \omega$.
+        \item $F^*(\dd{u}) = \dd{ (u\circ F) }$.
+    \end{enumerate}
+\end{prop}
+
+\begin{ex}[Helicoids]
+    Define $F \colon \R^2 \to \R^3$ by 
+    \begin{equation*}
+        F\mqty[u\\ v] = \mqty[v\cos u\\ v\sin u\\ u].
+    \end{equation*}
+    Let $\omega \in  \X^*(\R^3)$ be the covector field
+    \begin{equation*}
+        \omega = x \dd{x} - y \dd{y} + z^2 \dd{z} 
+    \end{equation*}
+    Then (\TODO)
+    \begin{align*}
+        F^*(\omega) &= (x \circ F)\dd{(y \circ F)} \\
+                    &- (y \circ F)\dd{(x \circ F)} \\
+                    &+ (z \circ F)^2 \dd{(z \circ F)}.
+    \end{align*}
+\end{ex}
+
+\begin{prop}[Restricting the covector field to submanifolds]
+    Say $\iota \coon S \inj M$ is the injection of an immersed submanifold. Then if $\omega \in \X^*(M)$, then $\iota^* \omega \in \X^*(S)$ is defined by the restriction 
+    \begin{equation*}
+      \omega \in T_p^*M \qq{therefore} \iota^* \omega = \omega\eval_{T_p S}.
+    \end{equation*}
+Explicitly, if $\vec \in T_p S$, then $\iota^* \omega(\vec v) = \omega(\iota_*(\vec v)) = \omega(\vec v)$.
+\end{prop}
+
+(Nicer than restricting vector fields!) 
+
+\begin{ex}[]
+    Let $M = \R^2$, and consider $S \inj M$ the $x$-axis. Say $w = \dd{y}$. Then for $p \in S$, any $\vec v \in T_p S$ has the form $\vec v = a \pdv{x}$. But then $w \paren{\vec v} = \dd{a \pdv{x} } = 0$! So $\iota^* w = 0$, although $w$ is a nonzero covector field on $M$.
+\end{ex}
+
+\begin{note}[]
+    What are exterior differential systems? Translate the partial differential equations in terms of covector fields on smooth manifolds. The solutions to the differential equations correspond to the ideals on the manifold for which the pullback map is trivial (the kernel).
+\end{note}
+
+\begin{ex}[Line integrals]
+    Let $[a,b] \subset \R$ be a closed bounded interval of the real line, and let $w$ be a smooth covector field of $[a,b]$. If $t$ is a local coordinate, then $\dd{t}$ gives a basis and we can write $w = f(t)\dd{t}$ for some $f \in C^\infty([a,b])$.
+\end{ex}
+
+\begin{prop}[]
+    \label{welldefd}
+    If $w \in \X^*([a,b])$ and $\phi \colon [c,d] \to [a,b]$ is an increasing diffeomorphism, then $\int_{[c,d]} \phi^* w = \int_{[a,b]} w$.
+\end{prop}
+
+We'll have to introduce sign conventions for orientation when taking surface integrals. (Hope it's as much fun as for defining sign conventions for homology on CW-complexes.)
+
+\begin{defn}[]
+    Now let $M$ be a smooth manifold. A \term{smooth curve segment} is a smooth map $\gamma \colon [a,b] \to M$. The \term{line integral} of $w$ over $\gamma$ is
+    \begin{equation*}
+        \int_\gamma w := \int_{[a,b]} \gamma^* w.
+    \end{equation*}
+    Note that by \ref{welldefd} the line integral is well defined, regardless of parameterization $\gamma$.
+\end{defn}
+
+\begin{todo}[]
+    Let $M$ be the plane punctured at the origin. Let $w = \frac{x \dd{y} - y \dd{x} }{x^2 + y^2}$. Then compute $\int_\gamma w$ for the parameterization $\gamma \colon [0, 2\pi] \to M$ given by 
+    \begin{equation*}
+        \gamma(t) = \mqty[\cos t\\ \sin t].
+    \end{equation*}
+\end{todo}
+
+\begin{thm}[Fundamental theorem of line integrals]
+    If $w = \dd{f}$, $f \in C^\infty(M)$, and $\gamma \colon [a,b]\to M$ is a smooth curve segment, then 
+    \begin{equation*}
+        \int_\gamma w = \int_\gamma \dd{f} = f(\gamma(b)) - f(\gamma(a)).
+    \end{equation*}
+\end{thm}
+
+If $w = \dd{f}$ for some $f \in C^\infty(M)$, $w$ is called \term{exact}, and $f$ is called a \term{potential function} for $w$. In this case, $\int_\gamma w$ depends only on the endpoints of $\gamma$. This integral is called \term{path-independent}. (We'd also say that the covector field is conservative.)
+
+\begin{note}[]
+    Working in $\R^n$, we often call vector fields conservative---but in $\R^n$ this amounts to a vector field being the gradient of a smooth function. Apparently the Euclidean metric gives a structure for $\grad$ and $\div$ to produce a correspondence between covector fields and vector fields.
+\end{note}
+
+\begin{thm}[]
+    A smooth covector field $w$ is conservative if and only if it is exact.
+\end{thm}
+
+\begin{proof}
+On the one hand, exact implies conservative. Conversely, choose $p_0 \in M$ and define $f(p) = \int_\gamma w$ where $\gamma$ is a path from $p_0$ to $p$.
+(There are some requirements for $\gamma$---it need be continuous, piecewise smooth, and with well-behaved one-sided limits.)
+\end{proof}
+
+\begin{prop}[Necessary conditions for exactness]
+   If $w = \dd{f}$ is exact and $w = a_i(x) \dd{x^i}$ for $a_i(x) = \pdv{x^i}$, then for all indices $i,j$ we have
+   \begin{equation*}
+       \pdv{a_i}{x_j} = 
+       \pdv{a_j}{x_i} =
+       \pdv{f}{x^i}{x^j}
+   \end{equation*}
+\end{prop}
+
+\begin{defn}[]
+    A covector field $w = a_i(x) \dd{x^i}$ for $a_i(x) = \pdv{x^i}$ is \term{closed} if for all indices $i,j$, $\pdv{a_i}{x_j} = \pdv{a_j}{x_i}$.
+\end{defn}
+
+\begin{todo}[]
+    Show that the 
+\end{todo}
