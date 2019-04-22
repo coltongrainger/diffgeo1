@@ -1,0 +1,100 @@
+\begin{lem}[Poincaré lemma for covector fields]
+    \label{lem:poincare_lemma_for_covector_fields}
+    If $M \in \Man$ is a simply connected manifold, then a covector field $w$ is closed if and only if $w$ is exact.
+\end{lem}
+
+\begin{note}[deRham cohomology]
+    \label{rem:derham_cohomology}
+    So, if $M$ is a simply connected manifold, then the first deRham cohomology group is trivial. (Where deRham cohomology groups are the quotient of the group of closed $n$-forms by exact $n$-forms.)
+\end{note}
+
+\begin{prop}[Closed covector fields]
+    \label{prop:closed_covector_fields}
+    \hfill
+    \begin{enumerate}
+    \item  Let $w$ be a closed covector field on $M$. Then every $p \in M$ has a neighborhood $U \subset M$ on which $w\eval_p$ is exact.
+    \item Closedness of covector fields is independent of the choice of local coordinate charts.
+    \item In fact, $w$ is closed iff for all $X, Y \in \X M$, we have $X(w(Y))-Y(w(X)) = w(\bkt{X,Y})$.
+    \item Pullbacks preserve closedness and exactness. 
+    \end{enumerate}
+\end{prop}
+
+\begin{defn}[Tensor products]
+    \label{defn:tensor_products}
+    Let $V, W \in \Vec$ be finite dimensional vector spaces over $\R$. 
+    Let $a^*, b^* \in V^*, W^*$ be covectors. 
+    The \term{tensor product} of $a^* \otimes b^*$ is the bilinear functional
+    defined on vectors $\vec v \times \vec w \in V \times W$ by
+    \begin{equation*}
+        (a^* \otimes b^*)(\vec v, \vec w) = a^*(\vec v) b^*(\vec w).
+    \end{equation*}
+    Then the space $V^* \otimes W^*$ is the space of the tensors $\{a^* \otimes b^* : a \in V, b \in W\}$. 
+\end{defn}
+
+\begin{prop}[Properties of the tensor product]
+    \label{prop:properties_of_the_tensor_product}
+    The dimension of the tensor product of dual spaces $V^*$ and $W^*$ is the product $\dim V^* \cdot \dim W^*$. 
+    There's a basis for $V^* \otimes W^*$ given by the tensors of basis elements for $V^*$ and $W^*$ respectively.
+    Note that $V \otimes W := (V^* \otimes W^*)^*$ is the dual.
+\end{prop}
+
+We'll mostly work with $n$-isomorphic copies of a single $V \in \Vect$.
+
+\begin{defn}[Wedge product]
+    \label{defn:wedge_product}
+    Let $\alpha, \beta \in V^*$. The \term{wedge product} of $\alpha$ and $\beta$ is defined as
+    \begin{equation*}
+        \alpha \wedge \beta : = \alpha \otimes \beta - \beta \otimes \alpha.
+    \end{equation*}
+    In particular, evaluated on two vectors $(v, w) \in V^2$, we have 
+    \begin{equation*}
+        \alpha \wedge \beta (v, w) = \det\mqty[\alpha(v) & \alpha(w)\\ \beta(v) & \beta(w)].
+    \end{equation*}
+    More generally, the wedge product of $k$ covectors in $V^*$ is defined pointwise for $v^k$ in $V$ by
+    \begin{equation*}
+        \alpha^1 \wedge \cdots \wedge \alpha^k \mqty[v_1 & \cdots & v_k] = \det\paren{\sum\limits_{i,j}^{n} \alpha^i(v_i)}.
+    \end{equation*}
+    The \term{space of alternating $k$-tensors} or $k$-vectors of $V^*$ is the defined by 
+    \begin{equation*}
+        \bigwedge^k V^* := \mathrm{span}\set{\alpha^1 \wedge \cdots \wedge \alpha : \alpha^i \in V^*}.
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Properties of the wedge product]
+    \label{prop:properties_of_the_wedge_product}
+\hfill
+    \begin{enumerate}
+    \item It's bilinear,
+    \item it's associative,
+    \item it's anti-commutative.
+    \item For $\omega \in \bigwedge^k V^*$ and $\eta \in \bigwedge^\ell V^*$, we have $\omega \wedge \eta \in \bigwedge^{\ell + k} V^*$ and $\omega \wedge \eta = (-1)^{k\ell} \eta \wedge \omega$.
+    \end{enumerate}
+\end{prop}
+
+\begin{defn}[Decomposable]
+    \label{defn:decomposable}
+    A $k$-covector $\eta$ is said to be \term{decomposable} if it can be expressed as a wedge of $k$ covectors.
+\end{defn}
+
+\begin{ex}[An indecomposable $2$-covector on $\R^4$]
+    \label{ex:an_indecomposable_2_covector_on_r_4_}
+    $\eta = \dd{x_1} \wedge \dd{x_2} + \dd{x_3} + \dd{x_4}$ is not decomposable.
+    (Hint: consider that any decomposable $k$-covector wedged with itself is the $0$-function.)
+\end{ex}
+
+\begin{defn}[Interior multiplication]
+    \label{defn:interior_multiplication}
+    There's a linear map from the space of alternating $k$-tensors to the space of alternating $k-1$-tensors called \term{interior multiplication by $\vec v$}.
+    \begin{align*}
+        \iota_{\vec v} \colon
+       \bigwedge^k V^*  &\to \bigwedge^{k-1} V^*\\
+        \omega &\overset{\mapsto}{\iota_v} \iota_v \omega = \iota_v\omega : (\vec w_1, \ldots, \vec w_{k-1}) \mapsto \omega(\vec v, \vec w_1, \ldots, \vec w_{k-1}).
+    \end{align*}
+    The interior multiplication of $\omega$ and $\vec v$ is referred to as ``$\vec v$-left hooked with $\omega$.'' 
+\end{defn}
+
+Ryan asked if there's a connection to, e.g., the front or back face maps. I asked if there was a relation to the cap product. \TODO. \ldots
+
+% I got distracted... missed the definition of a $k$-differential form, as well as the space $\Omega^k(M)$ on a manifold. Apparently its the bundle of the alternating $k$-tensors (which are tensors of tangent vectors) in \bigvee T^*M.
+
+In smooth charts, a $k$-form $\omega$ has a local expression \begin{equation*}\omega = \sum\limits_{\forall i_1, \ldots, i_k} f_{i_1, \ldots, i_k}(x) \dd{x^{i_1}i \wedge \ldots \wedge \dd{x^{i_k}}}\end{equation*}.

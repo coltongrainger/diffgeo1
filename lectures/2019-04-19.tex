@@ -1,9 +1,11 @@
-Covectors are just linear maps on vector spaces. 
+\begin{quote}\textit{
+    ``Covectors are just linear maps on vector spaces. They're not necessarily Krönecker pairings.''
+}\end{quote}
 
-Last time, we defined  pullbacks of smooth vector fields. (They're not necessarily Krönecker pairings.) 
+Last time, we defined  pullbacks of smooth vector fields.
 
 \begin{note}[]
-   For a map $M \xrightarrow{F} N$, regardless of whether $F$ is surjective, injective, the pullback of $\omega \in \X^*(N)$ is always a smooth covector field on $M$. Much nicer than pushforwards! (Think about preimages as respecting set-theoretic operations.)
+   For a map $M \xrightarrow{F} N$, regardless\footnote{Much nicer than pushforwards! Think about preimages as respecting set-theoretic operations.} of whether $F$ is surjective, injective, etc., the pullback of $\omega \in \X^*(N)$ is always a smooth covector field on $M$.
 \end{note}
 
 For $\omega \in \X^*(N)$, we denote the pullback via $F$ as $F^* \omega$. If we let $F^*(\vec v)$ denote $\dd{F_p} (\vec v)$, then $(F^* \omega)(\vec v) = \omega (F_*(\vec v))$.
@@ -11,7 +13,7 @@ For $\omega \in \X^*(N)$, we denote the pullback via $F$ as $F^* \omega$. If we 
 \begin{prop}[]
     Let $M \xrightarrow{F} N$ be smooth, $\omega \in \X^*(N)$, and $u \in C^\times(N)$. Then both:
     \begin{enumerate}
-        \item $F^*(uw) = (u \circ F)F^* \omega$.
+        \item $F^*(u\omega) = (u \circ F)F^* \omega$.
         \item $F^*(\dd{u}) = \dd{ (u\circ F) }$.
     \end{enumerate}
 \end{prop}
@@ -27,28 +29,32 @@ For $\omega \in \X^*(N)$, we denote the pullback via $F$ as $F^* \omega$. If we 
     \end{equation*}
     Then (\TODO)
     \begin{align*}
-        F^*(\omega) &= (x \circ F)\dd{(y \circ F)} \\
-                    &- (y \circ F)\dd{(x \circ F)} \\
-                    &+ (z \circ F)^2 \dd{(z \circ F)}.
+        F^*(\omega) &= (x \circ F)\dd{(y \circ F)} - (y \circ F)\dd{(x \circ F)} + (z \circ F)^2 \dd{(z \circ F)}.
+    % recall that the differential is a derivation on 1 forms:  %
     \end{align*}
 \end{ex}
 
 \begin{prop}[Restricting the covector field to submanifolds]
-    Say $\iota \coon S \inj M$ is the injection of an immersed submanifold. Then if $\omega \in \X^*(M)$, then $\iota^* \omega \in \X^*(S)$ is defined by the restriction 
+    Say $\iota \colon S \inj M$ is the injection of an immersed submanifold. The pullback of $\omega \in \X^*(M)$ is $\iota^* \omega \in \X^*(S)$, and, at a point $p \in M$, where $\omega$ is in the cotangent space $T_p^*M$, its pullback is just the restriction
     \begin{equation*}
-      \omega \in T_p^*M \qq{therefore} \iota^* \omega = \omega\eval_{T_p S}.
+      \iota^* \omega = \omega\eval_{T_p S}.
     \end{equation*}
-Explicitly, if $\vec \in T_p S$, then $\iota^* \omega(\vec v) = \omega(\iota_*(\vec v)) = \omega(\vec v)$.
+Explicitly,\footnote{Much nicer than restricting vector fields!}
+if $\vec v \in T_p S$, then 
+\begin{equation*}\iota^* \omega(\vec v) = \omega(\iota_*(\vec v)) = \omega(\vec v)\end{equation*}
 \end{prop}
 
-(Nicer than restricting vector fields!) 
 
 \begin{ex}[]
-    Let $M = \R^2$, and consider $S \inj M$ the $x$-axis. Say $w = \dd{y}$. Then for $p \in S$, any $\vec v \in T_p S$ has the form $\vec v = a \pdv{x}$. But then $w \paren{\vec v} = \dd{a \pdv{x} } = 0$! So $\iota^* w = 0$, although $w$ is a nonzero covector field on $M$.
+    Let $M = \R^2$, and consider $S \inj M$ the $x$-axis. 
+    Say $\omega = \dd{y}$. 
+    Then for $p \in S$, any $\vec v \in T_p S$ has the form $\vec v = a \pdv{x}$. 
+    But then $\omega \paren{\vec v} = \dd{a \pdv{x} } = 0$! 
+    So $\iota^* \omega = 0$, although $\omega$ is a nonzero covector field on $M$.
 \end{ex}
 
 \begin{note}[]
-    What are exterior differential systems? Translate the partial differential equations in terms of covector fields on smooth manifolds. The solutions to the differential equations correspond to the ideals on the manifold for which the pullback map is trivial (the kernel).
+    What are \term{exterior differential systems}? Translate the partial differential equations in terms of covector fields on smooth manifolds. The solutions to the differential equations correspond to the ideals on the manifold for which the pullback map is trivial (the kernel).
 \end{note}
 
 \begin{ex}[Line integrals]
@@ -60,7 +66,7 @@ Explicitly, if $\vec \in T_p S$, then $\iota^* \omega(\vec v) = \omega(\iota_*(\
     If $w \in \X^*([a,b])$ and $\phi \colon [c,d] \to [a,b]$ is an increasing diffeomorphism, then $\int_{[c,d]} \phi^* w = \int_{[a,b]} w$.
 \end{prop}
 
-We'll have to introduce sign conventions for orientation when taking surface integrals. (Hope it's as much fun as for defining sign conventions for homology on CW-complexes.)
+We'll have to introduce sign conventions for orientation when taking surface integrals.\footnote{Hope it's as much fun as for defining sign conventions for homology on CW-complexes.}
 
 \begin{defn}[]
     Now let $M$ be a smooth manifold. A \term{smooth curve segment} is a smooth map $\gamma \colon [a,b] \to M$. The \term{line integral} of $w$ over $\gamma$ is
