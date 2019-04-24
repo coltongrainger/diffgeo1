@@ -148,10 +148,22 @@ Problems from Chapter 11, \emph{Introduction to Smooth Manifolds.}
     \end{equation*}
 
     \begin{proof}
-        If $C = M$, then $k = 0$ and $\dd{f}_p = 0$. This follows as for any local chart $(x^i)$ centered at $p$, the path $f(\vec u t)$ has a local maximum point at $t =0$ for any unit vector $\vec u \in S^{n-1} \subset \R^n$, and therefore $\pdv{f}{x^i}  = 0$ for all $i = 1, \ldots, n$.
+        If $C = M$, then $k = 0$, the defining function is trivial, and $\dd{f}_p = 0$. This follows because for any local chart $(x^i)$ centered at $p$, the path $f(\vec u t)$ has a local maximum point at $t =0$ for any unit vector $\vec u \in S^{n-1} \subset \R^n$, and therefore $\pdv{f}{x^i}  = 0$ for all $i = 1, \ldots, n$.
 
-        Say $C \subsetneq M$. Then $\Phi$ is constant on $C \cap U$ for a chart neighborhood $(U, (x^i))$ centered at $p$.
-        So $\dd{\Phi^j\eval_C} = 0$ for all $j = 1, \ldots, k$. On the other hand $\Phi^{-1}(0) = U \cap C$, so wlog say the last $k+1, \ldots, n$ 
+        Say $C \subsetneq M$, and let $\iota \colon C \to M$ be the inclusion embedding.
+        Because $C$ is embedded, for $p \in C$, there's a chart neighborhood $(U, (x^i))$ centered at $p$ 
+        such that $\Phi$ is a local defining function for $C \cap U$. Because $\Phi$ is a submersion,
+        we can assume the chart $(x^i)$ satisfies 
+        \begin{equation*}
+            \text{the first $k$ coordinates }x^1, \ldots, x^k\text{ are $0$ iff the defining function $\Phi(x^i)$ maps to $0$.}
+        \end{equation*}
+        Hence, $\iota^*(\dd{\Phi^j}) = 0$. So, by the previous exercise \ref{1130}, $\dd{\Phi^j\eval_C} = 0$. 
+        That is, $\dd{\Phi^j\eval_C}$ annihilates each tangent vector $v_p \in T_p C = \mathrm{span}\qty(\pdv{x^1},\ldots, \pdv{x^k})$.
+        On the other hand, $\Phi^{-1}(0) = U \cap C$, implies 
+        $\dd{\Phi^j} \neq 0$, as the tangent vectors along the last $n-k$ coordinates $x^{k+1}, \ldots, x^n$ produce
+        \begin{equation*}
+            
+        \end{equation*}
     \end{proof}
 
 \end{enumerate}
