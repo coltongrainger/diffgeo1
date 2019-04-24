@@ -1,19 +1,13 @@
+\newcommand{\fake}[2]{\tilde{#1}^{#2}} 
+
 Last time, we defined covectors, cotangent vectors, and a basis for the \term{cotangent space at a point}, given a basis of tangent vectors for the tangent space.
 
-That is, by choosing a coordinate chart $(U, (x^{i}))$ about a point $p \in U$, we have a basis for $T_p M$
-\[
-    \pdv{x^1} \eval_p,
-    \ldots,
-    \pdv{x^n} \eval_p,
-\]
-and therefore a dual basis for $T^*_p M$
-\[
-    \dd {x^1} \eval_p,
-    \ldots,
-    \dd {x^n} \eval_p.
-\]
-
-\newcommand{\fake}[2]{\tilde{#1}^{#2}} 
+That is, by choosing a coordinate chart $(U, (x^{i}))$ about a point $p \in U$, we have a basis for $T_p M$ (and so a dual basis for $T^*_p M$).
+\begin{align*}
+      \set{ \pdv{x^1} \eval_p, \ldots, \pdv{x^n} \eval_p},
+      \quad
+      \set{\dd {x^1} \eval_p, \ldots, \dd {x^n} \eval_p}.
+\end{align*}
 
 \begin{ex}[Changing the cotangent basis]
    \label{changingcotangent}
@@ -147,7 +141,7 @@ We proceed to ``discover'' differential $1$-forms.
 
 
 \begin{prop}[]
-   Let $\gamma \colon J \to M$ be a smooth curve, $f \in C^\rimes(M)$. Then the differential of the function $f \circ \gamma \colon J \to \R$ is given by (the familiar evaluation)
+   Let $\gamma \colon J \to M$ be a smooth curve, $f \in C^\times(M)$. Then the differential of the function $f \circ \gamma \colon J \to \R$ is given by (the familiar evaluation)
    \[
       (f \circ \gamma) ' (t) = \dd { f_{\gamma(t)} } (\gamma'(t)).
    \]
