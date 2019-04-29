@@ -1,0 +1,129 @@
+Today we'll barrel through orientations (so to take integrals over forms).
+
+Let $M$ be a smooth manifold of dimension $n$. An orientation of $M$ is determined by a smooth non-vanishing $n$-form $\omega$ on $M$ (called a \term{top-form}). Two non-vanishing $n$-forms $\omega$ and $\tilde \omega$ on $M$ determine the same orientation if $\omega = f (\tilde \omega)$ for a strictly positive $f \in C^\infty(M)$.
+
+\begin{ex}[Standard orientation on Euclidean space]
+\label{standard-orientation-on-euclidean-space}
+    On $\R^n$, the standard orientation is determined by $\omega = \dd{x^1} \wedge \ldots \dd{x^n}$. The \emph{only} other orientation is determined by, e.g., $- \omega = \dd{x^1} \wedge \cdots \wedge \dd{x^n} \wedge \dd{x^{n-1}}$.
+\end{ex}
+
+How is one to orient a manifold with boundary? Well, given an orientation on the interior of the manifold, what would a decent convention be to orient the boundary?
+
+Let $M$ be a $n$-dim manifold with boundary. The \term{induced orientation} on $\partial\paren{M}$ is determined by the $n-1$ form $N \frown \omega$, where $\omega$ is a representative determining the orientation on $M$, and $N$ is any \term{outwards-pointing} nonzero vector field along $\partial\paren{M}$. (Recall that our boundary convention has the \emph{last} coordinate of $\H^n$ to be $\R_{\ge 0}$.)
+
+\newcommand{\w}{\wedge} 
+\newcommand{\wmany}{\wedge \cdots \wedge} 
+
+\begin{ex}[Calc III orientations]
+    \label{ex:calc_iii_orientations}
+    \hfill
+    \begin{enumerate}
+        \item Let $M$ be the unit disc in the plane $\R^2$. Then $\partial\paren{M} = S^1$. Say $\omega = \dd{x} \wedge \dd{y}$. Choose $N = x\pdv{x} + y\pdv{y}$, which is a nonzero vector field $N \in \X M$.
+              Taking the cap $N \frown (\dd{x} \w   \dd{y}) = x \dd{y} - y \dd{x}$, gives a representative for the (pretty standard) orientation on $S^1$.
+        \item If $\omega$ is the standard representative for the orientation on $\R^n$, then on $S^3 = \partial\paren{B^2}$, the induced orientation is given by
+            \begin{equation*}
+                x \dd{y} \w \dd{z} + y \dd{z} \w \dd{x} + z \dd{x} \w \dd{y}.
+            \end{equation*}
+    \end{enumerate}
+\end{ex}
+
+Is it always possible to choose an outwards pointing normal vector? Nope.
+
+\begin{ex}[Intuition for integration]
+    \label{ex:intuition_for_integration}
+    We're integrating \emph{forms} not functions.
+    What's the differential? For notation's sake, ``$\dd{x}\dd{y} = \dd{x} \w \dd{y}$'' refers to the \emph{area of a parallelogram}, appropriately signed.
+
+    Then $\dd{x} \w \dd{y} \paren{\vec v, \vec w} = v^1 w^2 - v^2 w^1 = \det \mqty[\vec v & \vec w]$.
+
+    If we assume the standard orientation on $\R^n$, then computationally, we may take the iterated Riemann integrals in what ever order is useful. (\TODO, why?)
+    \begin{equation*}
+        \int_{\partial\paren{M}} f \dd{x} \w  \dd{y} 
+        := \dint f \dd{x} \dd{y} 
+        = \dint f \dd{y} \dd{x}.
+    \end{equation*}
+\end{ex}
+
+\begin{defn}[Domain of integration]
+    \label{defn:domain_of_integration}
+    In Euclidean space, a domain of integration $D$ is a bounded subset whose boundary $\partial\paren{D}$ has measure zero.
+
+    Let $D \subset \R^n$ be a domain of integration, and $\omega$ a continuous $n$-form on $D$. We have in local coordinates
+    \begin{equation*}
+        \omega = f \dd{x^1}  \wmany \dd{x^n}.
+    \end{equation*}
+    We define the \term{integral of $\omega$ over $D$} to be 
+    \begin{equation*}
+        \int_D \omega := \int \cdots \int f \dd{x^1} \cdots \dd{x^n} \qq{(Riemann integral).}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Diffeomorphisms preserve orientation]
+    \label{prop:diffeomorphisms_preserve_orientation}
+    Let $D, E$ be open domains in Euclidean space. Let $g \colon \bar D \to \bar E$ be a smooth map that restricts to $D$ to be a diffeomorphism. Then $g$ pulls back a $g^* \psi$ for $\psi \in \Omega^n(E)$ to the top-form on $D$ $\det g_* g(\psi)$ \ldots \TODO.
+    \begin{equation*}
+        \int_D g^* \omega = \pm \int_E \omega.
+    \end{equation*}
+\end{prop}
+
+Suppose now $M \in \Man^n$ and $\omega$ is a top-form. If $\omega$ is compactly supported within the domain $U$ of a chart, then the integral of $\omega$ over $M$ is 
+\begin{equation*}
+    \int_M \omega := \epsilon \int_{\phi(U)} \paren{\psi^{-1}}^* \omega.
+\end{equation*}
+The sign $\epsilon$ is determined according to whether or not $\phi$ is orientation preserving:
+\begin{cases}
+    $\det \phi^* < 0$ & $\epsilon = -1$,\\
+    $\det \phi^* > 0$ & $\epsilon = 1$.
+\end{cases}
+Since $\phi$ is a diffeomorphism, the determinant of $\phi^*$ is strictly non-zero.
+
+\begin{ex}[Low-dim manifolds]
+    \label{ex:zero_dim_manifolds}
+    Say $M$ is a countable collection of points. An orientation on $M$ is determined by a function $\{\pm 1\}^M$.
+
+    Say $M$ is a connected, compact, $1$-dim manifold. Then $\partial\paren{M} = \emptyset$ or $\{a, b\}$, depending on whether or not $M$ is $\simeq S^1$. Putting a chart on $M$, we have a diffeo $M \simeq [a,b]$. If $\omega = \dd{x}$, then at $b$, the outward pointing normal is $\pdv{x}$, and the orientation at $b$ induced by that of the interior of $M$ is $1$. On the other hand, the orientation at $a$ is $-1$, since the outward pointing normal is $-\pdv{x}$.
+\end{ex}
+
+Say that $S \subset M^n$ is an oriented immersed $k$-dim submanifold. Then let $\omega \in \Omega^k(M)$ with a restriction to $S$ that's compactly supported. Then we define the integral of $\omega$ over $S$ to be 
+\begin{equation*}
+    \int_S \omega := \int_S \iota^* \omega,
+\end{equation*}
+where $\iota \colon S \inj M$ is the (not necessarily  injective) inclusion map.
+
+\begin{ex}[Path integrals]
+    \label{ex:path_integrals}
+    \TODO, find $\gamma$ a smooth path in the plane, then compute the integral of $\omega = x \dd{y} - y  \dd{x}$ with respect to $\gamma$.
+\end{ex}
+
+\begin{ex}[Main motivating example]
+    \label{ex:main_motivating_example}
+   
+    Say $M$ is a compact, connected, oriented $n$-manifold with boundary and let $S = \partial\paren{M}$. For $\omega$ a top form \emph{on S}, we have 
+    \begin{equation*}
+        \int_{\partial\paren{M}}\omega := \int_{\partial\paren{M}}\iota^*_{\partial\paren{M}} \omega.
+    \end{equation*}
+\end{ex}
+
+\begin{prop}[How integration interacts with other operations]
+    \label{prop:how_integration_interacts_with_other_operations}
+    \hfill
+    \begin{enumerate}
+        \item If $\omega$ is a positively oriented top form on $M$, then $\int_M \omega > 0$.
+        \item If $f \colon M \to N$ is a diffeomorphism, then $\int_N \omega = \pm \int_M f^* \omega$.
+    \end{enumerate}
+\end{prop}
+
+We'll really exploit that we only need a subset $D \subset M$ whose boundary has measure zero. The two key examples here are for parameterizations of the circle in $\R^2$ and the sphere in $\R^3$, which are:
+
+\begin{align*}
+    \gamma \colon [0, 2\pi] 
+    &\to \R^2\\
+    \gamma(t)& = \mqty[\cos t \\ \sin t]
+\end{align*}
+
+\begin{align*}
+    F \colon [0,\pi]\times[0, 2\pi] 
+    &\to \R^3\\
+    \mqty[\phi\\\theta] 
+    &\overset{F}{\mapsto} \mqty[\sin\phi \cos\theta \\ \sin\phi \sin\theta \\ \cos\phi]
+\end{align*}
