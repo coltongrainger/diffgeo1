@@ -1,0 +1,49 @@
+Today we state (without proof) Stokes' theorem. 
+
+\begin{ex}[Essay]
+    \label{ex:essay}
+    Describe how the fundamental theorem of calculus, Green's theorem, and the fundamental theorem of line integrals are all consequences of Stokes' theorem. Do so as if you were explaining it to a lovable dog.
+\end{ex}
+
+Suppose that $M \in \Man^n$ is a manifold with boundary $\partial\paren{M}$ and that $M$ is \emph{orientable}.
+
+Let $\omega \in \Omega^{n-1}(M)$ be a top differential form, such that $\omega$ is compactly supported on $M$.
+
+Then
+\begin{equation*}
+    \int_M \dd{\omega} = \int_{\partial\paren{M}}\omega,
+\end{equation*}
+where $\partial\paren{M}$ has the induced orientation from $M$. Note that if $\partial\paren{M} = \emptyset$, then $\int_{\partial\paren{M}}\omega = 0$. If $M$ is a $1$-dimensional manifold, then $\int_{\partial\paren{M}}\omega$ is a finite linear combination (of \TODO residues?).
+
+\begin{proof}
+    Let $M = \H^n$ as the basic case. Then say $\omega \in \Omega^{n-1}(M)$ has compact support. There's a finite $R > 0$ such that $\mathrm{supp}\omega \subset \bkt{-R, R}^{n-1} \times [0, R]$.
+
+    In a coordinate basis (the standard one for $\H^n$), we have $\omega = \sum\limits_{i=1}^{n}a_i(x) \dd{x}_{(i)}$ where $\dd{x}_{(i)}$ is the wedge of all $1$-forms in the basis for the cotangent space of $\H^n$, omitting $\dd{x^i}$ and adding the sign $(-1)^{i-1}$.
+
+Then 
+\begin{equation*}
+    \dd{\omega} = \sum\limits_{i=1}^{n} \pdv{a}{x^i} \dd{x^1} \wedge \cdots \wedge \dd{x^n}.
+\end{equation*}
+
+    Sketch. Compare $\iota^*_{\partial\paren{\H^n}}\omega = a_n(x^1, \ldots, x^{n-1}, 0) \dd{x}_{(n)}$. Finish for $\H^n$.
+
+    Similarly, if $M = \R^n$, then $\mathrm{supp} \omega$ is contained in some cube $\bkt{-R,R}^n$, and a similar computation shows that 
+    \begin{equation*}
+        \int_M \dd{\omega} = 0 = \int_{\partial\paren{M}} \omega \qq{because $\partial\paren{M}$ is empty.}
+    \end{equation*}
+
+    Now let $M$ be a general manifold with boundary and orientable. Suppose $\omega$ is an $n-1$ form compactly supported in $\mathrm{supp}(U)$. Then from above, we see that $\int_M \dd{\omega} = \int_{\partial\paren{M}} \omega$ pulling back $\omega$ and $\dd{\omega}$ with the diffeomorphism $(U, \phi)$.
+
+    Finally, let $\omega$ be a compactly supported $n-1$ form on $M$. Covering the compact set $\mathrm{supp} \omega$ with finitely many positively oriented chart domains $(U_i, \phi_i)$ and let $\set{\psi_i}$ be a partition of unity subordinate to this open cover. 
+    Integrating $\omega$ over $\partial\paren{M}$ given $\int_{\partial\paren{M}}\omega = \sum\limits_{i} \psi_i \int_{\partial\paren{M}}\omega$.
+\end{proof}
+
+\begin{coro}[Exact and closed forms]
+    \label{coro:exact_and_closed_forms}
+    \hfill
+    \begin{enumerate}
+        \item   If $\omega$ is an exact $n$ form on $M$, a compact orientable manifold without boundary, then $\int_M \omega = 0$.
+        \item   If $\omega$ is a closed $n-1$ form on $M$, a compact orientable manifold without boundary, then $\int_{\partial\paren{M}} \omega = -$.
+            \item If $M$ is a smooth manifold and $S \subset M$ is an oriented compacted $k$-dim submanifold without boundary \TODO
+    \end{enumerate}
+\end{coro}
