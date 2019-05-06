@@ -1,0 +1,49 @@
+\begin{quote}
+\textit{%
+    ``We're in the algebra of differential forms on a manifold, $\Omega(M)$.''
+}
+\end{quote}
+% We talked a bit about the graduate linear algebra syllabus
+% namely, in which course will tensor products be covered? 5000/6000 level? How many problems in the problem sets? Etc.
+% It's not on the algebra syllabus.
+
+\newcommand{\om}[1]{\omega\paren{#1}} 
+\newcommand{\som}[1]{\Omega\paren{#1}} 
+
+\begin{defn}[Multi-index notation]
+    \label{defn:multi_index_notation}
+    In local coordinates $(x^i)$, any $k$-form $\om$ can be expressed as
+    \begin{equation*}
+        \om = \sum\limits_{\paren{i_1, \ldots, i_k} \in I_n^k} 
+            f_{\paren{i_1, \ldots, i_k}}(x) \dd{x}^{i_1} \wedge \cdots \wedge \dd{x}^{i_k}.
+    \end{equation*}
+    where $I_n^k$ is the product of tuples $\paren{1, \ldots, n} \times \paren{1, \ldots, k}$.
+\end{defn}
+
+We can compute the action of a covector $\om$ on $f_I(x)$ \TODO. (I got lost in the indices.)
+
+\begin{equation*}
+    f_I(x) = \om \mqty[\pdv{x^{i_1}} & \cdots & \pdv{x^{i_k}}] 
+\end{equation*}f_I(x)
+
+We'll start in $\R^n$. Let $\om$ be a $k$-form, of the form,
+\begin{equation*}
+    \om = \sum\limits_{\abs{I}= k} f_I(x) \dd{x}^{i_1} \wedge \cdots \wedge \dd{x}^{i_k}.
+\end{equation*}
+The exterior derivative of $\om$ is the $k+1$-form on $\R^n$ 
+\begin{equation*}
+   \dd{\om} \sum\limits_{\abs{I}= k} \dd{f_I} \wedge \dd{x}^{i_1} \wedge \cdots \wedge \dd{x}^{i_k}. 
+\end{equation*}
+
+In $\R^2$, we have $\dd{x \dd{y}} = \dd{x} \wedge \dd{y}$.
+
+If $\om$ is a $1$-form, where $\om = f_i(x) \dd{x^i}$, then 
+\begin{equation}
+    \dd{\om} &= \dd{f_i} \wedge \dd{x^i}\\
+        &= \paren{}
+\end{equation}
+
+\begin{ex}[Exterior derivative]
+    \label{ex:exterior_derivative}
+    
+\end{ex}

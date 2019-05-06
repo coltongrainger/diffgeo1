@@ -8,7 +8,7 @@
 \begin{document}
 \maketitle
 
-Problems from Chapter 11, \emph{Introduction to Smooth Manifolds.}
+Problems from \emph{Introduction to Smooth Manifolds}, Chapter 11.
 \setcounter{section}{11}
 
 \begin{enumerate}
@@ -23,24 +23,25 @@ Problems from Chapter 11, \emph{Introduction to Smooth Manifolds.}
 
     \begin{proof}
         Let $p \in S$. 
-        Choose a slice chart $(U, (x^i))$ centered about $\iota(p)$ such that the first $j = 1, \ldots, \dim S$ coordinates $\iota^{-1} (x^j)$ parameterize $S \cap \iota^{-1}U$. 
-        Identify $S \cap \iota^{-1}U \inj \iota(S) \cap U$, then the domains of both $f$ and $f \eval_S$ can be expressed in coordinates by $(x^1, \ldots, x^k, x^{k+1}, \ldots, x^j)$.
-        Now evaluate the cotangent vectors on the LHS and RHS of \eqref{1130} at an arbitrary tangent vector $v_p \in T_p S \cong T_p (S\cap U)$. 
-        Let $v_p = \sum\limits_{i=1}^{n} v^i \pdv{x_i}\eval_p$.
+        Choose a slice chart $(U, (x^i))$ centered about $\iota(p)$ such that the first $k = \dim S$ coordinates $\iota^{-1} (x^i)$ parameterize $S \cap \iota^{-1}U$. 
+        Identifying $S \cap \iota^{-1}U \inj \iota(S) \cap U$,
+        both $f$ and $f \eval_S$ are determined (in the neighborhood $U$ of $p$) by coordinates by $(x^1, \ldots, x^k, x^{k+1}, \ldots, x^j)$.
+
+        Now we evaluate the cotangent vectors on the LHS and RHS of \eqref{1130} at an arbitrary tangent vector $v_p \in T_p S \cong T_p (S\cap U)$, where $v_p = \sum\limits_{i=1}^{n} v^i \pdv{x_i}\eval_p$.
         On the LHS, $f\eval_S$ is constant with respect to $x^{k+1}, \ldots, x^n$, therefore 
         \begin{align*}
             \dd{\paren{f\eval_S}}(v_p) 
-                &= \mqty[\pdv{f}{x^1}   & \cdots & \pdv{f}{x^k}]\eval_p    \mqty[\dd{x^1}\\ \vdots \\ \dd{x^k}] \eval_p
-                    \mqty[\pdv{x^1}   & \cdots & \pdv{x^n}]\eval_p    \mqty[v^1\\ \cdots \\ v^n]
+                &= \mqty[\pdv{f}{x^1}   & \cdots & \pdv{f}{x^k}]\eval_p    \mqty[\dd{x^1}\\ \vdots \\ \dd{x^k}] \eval_p 
+                    \mqty[\pdv{x^1}   & \cdots & \pdv{x^n}]\eval_p    \mqty[v^1\\ \vdots \\ v^n] \\
                 &= \mqty[\pdv{f}{x^1}   & \cdots & \pdv{f}{x^k}] \eval_p  [I_k \mid \vec 0] 
-                    \mqty[v^1\\ \cdots \\ v^n] 
-                &= \mqty[\pdv{f}{x^1}   & \cdots & \pdv{f}{x^k}] \eval_p \mqty[v^1\\ \cdots \\ v^k].
+                    \mqty[v^1\\ \vdots \\ v^n] \\
+                &= \mqty[\pdv{f}{x^1}   & \cdots & \pdv{f}{x^k}] \eval_p \mqty[v^1\\ \vdots \\ v^k].
         \end{align*}
         On the RHS, pulling back $v_p$ under $\iota^*$, we have
         \begin{equation*}
-            \iota^*(\dd{f}_p)(v_p) = V_p f = \mqty[\pdv{f}{x^1}   & \cdots & \pdv{f}{x^k}] \eval_p \mqty[v^1\\ \cdots \\ v^k].
+            \iota^*(\dd{f}_p)(v_p) = v_p f = \mqty[\pdv{f}{x^1} & \cdots & \pdv{f}{x^k}] \eval_p \mqty[v^1\\ \vdots \\ v^k].
         \end{equation*}
-        Since the covectors agree at each $p$ on $S$, they are identical on $S$.
+        This shows that the covectors on the LHS and RHS of \eqref{1130} agree at each point $p$ in $S$.
     \end{proof}
 
 \setcounter{enumi}{5}
@@ -65,14 +66,12 @@ Problems from Chapter 11, \emph{Introduction to Smooth Manifolds.}
                         \pdv{y^n}{x^1}\eval_p         & \cdots & \pdv{y^n}{x^n}\eval_p]
                         \mqty[\dd{x^1}\eval_p \\ \vdots \\ \dd{x^n}\eval_p].
                 \end{equation*}
-                Our hypothesis is that the set $\set{\mqty[\pdv{y^i}{x^1}\eval_p & \cdots & \pdv{y^i}{x^n}\eval_p]}_{i=1}^n$ is linearly independent over $\R^n$.
+                Our hypothesis is that the set $\set{\mqty[\pdv{y^i}{x^1}\eval_p & \cdots & \pdv{y^i}{x^n}\eval_p]}_{i=1}^n$ (vectors of evaluated partial derivatives) is linearly independent over $\R^n$.
                 Therefore the linear transformation $\qty[\pdv{y^i}{x^j}\eval_p] = \bkt{\phi_*}$ is invertible, where $\phi$ is the map
-                \begin{align*}
-                    \phi \colon W
-                    &\to \R^n\\
-                    q 
-                    &\overset{\mapsto}{\phi} \mqty[y^1(q)\\\vdots \\ y^n(q)].
-                \end{align*}
+                \begin{equation}
+                    \phi \colon W \to \R^n \qq{such that}
+                    q \overset{\phi}{\mapsto} \mqty[y^1(q)\\\vdots \\ y^n(q)].
+                \end{equation}
                 By the inverse function theorem, there's an open neighborhood 
                 $U \subset W$ of $p$ such that $\phi^{-1} \circ \phi = \id \colon U \to U$, where $\phi^{-1}$ is smooth.
                 So $\phi\eval_U$ is a diffeomorphism into $\R^n$.
@@ -93,21 +92,19 @@ Problems from Chapter 11, \emph{Introduction to Smooth Manifolds.}
                 \begin{equation}
                     \label{surjective}
                     \mqty[\dd{y^1}\eval_p\\\vdots \\\dd{y^k}\eval_p]
-                        = \mqty[\pdv{y^1}{x^1}\eval_p & \cdots & \pdv{y^1}{x^n\eval_p} \\
-                                                      &        & \\
-                        \pdv{y^k}{x^1}\eval_p         & \cdots & \pdv{y^k}{x^n\eval_p}]
-                        \mqty[\dd{x^1}\eval_p & \vdots & \dd{x^n}\eval_p].
+                        = \mqty[\pdv{y^1}{x^1}\eval_p & \cdots & \pdv{y^1}{x^n}\eval_p \\
+                                                      &        & \\                   
+                        \pdv{y^k}{x^1}\eval_p         & \cdots & \pdv{y^k}{x^n}\eval_p]
+                        \mqty[\dd{x^1}\eval_p \\ \vdots \\ \dd{x^n}\eval_p].
                 \end{equation}
                 Assuming $k < n$ and $\set{\mqty[\pdv{y^i}{x^1}\eval_p & \cdots & \pdv{y^i}{x^n}\eval_p]}_{i=1}^k$ is linearly independent,
-                there are precisely $n-k$ differentials $\dd{x^{j_\ell}}$ in the nullspace of $\qty[\pdv{y^i}{x^j}\eval_p]$.
+                there are precisely $n-k$ differentials $\dd{x^{j_\ell}}$ in the nullspace of $\qty[\pdv{y^i}{x^j}\eval_p]$ (\ref{surjective}).
                 Define
-                \begin{align*}
-                    \phi \colon W
-                    &\to \R^n\\
-                    q 
-                    &\overset{\mapsto}{\phi} \mqty[y^1(q)\\\vdots \\ y^k(q)\\x^{j_1} \\ \vdots \\ x^{j_{n-k}}].
-                \end{align*}
-                By our observations in \ref{surjective}, $\bkt{\phi_*}$ has full rank at $p$ (we win!). 
+                \begin{equation*}
+                    \phi \colon W \to \R^n \qq{such that}
+                    q \overset{\phi}{\mapsto} \mqty[y^1(q)\\\vdots \\ y^k(q)\\x^{j_1} \\ \vdots \\ x^{j_{n-k}}].
+                \end{equation*}
+                In particular, $k < n$ and \ref{surjective} imply that $\bkt{\phi_*}$ has full rank at $p$.
                 Applying the inverse function theorem as before, there's a neighborhood $U$ such that $p \in U\subset W$ 
                 for which $\phi\eval_U$ is a coordinate chart extending the $(y^j)$.
             \end{proof}
@@ -128,42 +125,43 @@ Problems from Chapter 11, \emph{Introduction to Smooth Manifolds.}
                 call these $y^{i_\ell}$.
                 Defined $\phi$ as the map
                 \begin{align*}
-                    \phi \colon W
-                    &\to \R^n\\
-                    q 
-                    &\overset{\mapsto}{\phi} \mqty[y^{i_1}(q)\\\vdots \\ y^{i_n}(q)].
+                    \phi \colon W \to \R^n \qq{such that} q \overset{\phi}{\mapsto} \mqty[y^{i_1}(q)\\\vdots \\ y^{i_n}(q)].
                 \end{align*}
-                By our observations in \ref{injective}, $\bkt{\phi_*}$ has full rank at $p$.
+                Then $k > n$ and equation \ref{injective} imply that $\bkt{\phi_*}$ has full rank at $p$.
                 Apply the inverse function theorem to obtain a neighborhood $U$ such that $p \in U \subset W$ and $\phi\eval_U$ is a chart.
             \end{proof}
     \end{enumerate}
 
 \setcounter{enumi}{10}
-\item Say that $M$ is a smooth $n$-dim manifold, $C \subset M$ is embedded, and $f \in C^\infty(M)$. 
-    Suppose $f\eval_C$ has a (relative) maximum point $p \in C$.
-    Let $\Phi \colon U \to \R^k$ be a defining function for $C$ on a neighborhood $U$ of $p$.
-    There are $k$ reals $\ell_1, \ldots, \ell_k$ such that 
+\item Say that $M$ is a smooth $n$-dim manifold, $C \subset M$ is embedded $n-k$ dim manifold, and $f \in C^\infty(M)$ is a smooth function.
+    Suppose the restriction $f\eval_C$ has a (relative) maximum point at $p \in C$.
+    Then fore any defining function $\Phi \colon U \to \R^k$ for $C$ on a neighborhood of $p$,
+    there exist $k$ real numbers $\ell_1, \ldots, \ell_k$ such that 
     \begin{equation*}
-        \dd{f}_p = \mqty[\ell_1 & \cdots & \ell_k] \mqty[\dd{\phi^1} \\ \vdots \\ \dd{\phi^k}] \eval_p.
+        \dd{f}_p = \mqty[\ell_1 & \cdots & \ell_k] 
+            \mqty[\dd{\Phi^1} \\ \vdots \\ \dd{\Phi^k}] \eval_p.
     \end{equation*}
 
     \begin{proof}
         If $C = M$, then $k = 0$, the defining function is trivial, and $\dd{f}_p = 0$. This follows because for any local chart $(x^i)$ centered at $p$, the path $f(\vec u t)$ has a local maximum point at $t =0$ for any unit vector $\vec u \in S^{n-1} \subset \R^n$, and therefore $\pdv{f}{x^i}  = 0$ for all $i = 1, \ldots, n$.
 
-        Say $C \subsetneq M$, and let $\iota \colon C \to M$ be the inclusion embedding.
-        Because $C$ is embedded, for $p \in C$, there's a chart neighborhood $(U, (x^i))$ centered at $p$ 
-        such that $\Phi$ is a local defining function for $C \cap U$. Because $\Phi$ is a submersion,
-        we can assume the chart $(x^i)$ satisfies 
+        %Say $C \neq M$, and let $\iota \colon C \inj M$ be the inclusion. 
+        Let $\Phi \colon U \to \R^k$ be a local defining function for $C \cap U$.
+        Because $\Phi$ is a submersion, the push-forwards $\Phi_*$ \emph{surjects} onto the tangent space $T_0 \R^k$. 
+        Dually, the pullback $\Phi^*$ is a rank $k = \dim T_0\R^k$ \emph{injection} into the cotangent space $T_p M$.
+        Because $\Phi \eval_C$ is constant, the image of the pullback $T^*_0\R^k \inj T^*_p M$ must be orthogonal to every cotangent vector in $T^*_p C$. So the cotangent space over $M$ splits
+        \begin{equation}
+            \label{split}
+            T^*_p \R^k \oplus T^*_p C \xrightarrow{\cong} T^*_p M.
+        \end{equation}
+        
+        Our hypothesis is that $p$ is a local maximum point of $f \eval_C$. 
+        Consider that, for any smooth path $\gamma(t)$ in $C$ passing through $p$ at time $t =0$, 
+        the composite $f(\gamma(t))$ has a local extremum at $t =0$. It follows that 
         \begin{equation*}
-            \text{the first $k$ coordinates }x^1, \ldots, x^k\text{ are $0$ iff the defining function $\Phi(x^i)$ maps to $0$.}
+            \qq{every tangent vector $\gamma'(0)$ in $T_p C$ annihilates $f$} \implies \qq{the components of $\dd{f_p}$ in $T^*_p C$ are trivial.}
         \end{equation*}
-        Hence, $\iota^*(\dd{\Phi^j}) = 0$. So, by the previous exercise \ref{1130}, $\dd{\Phi^j\eval_C} = 0$. 
-        That is, $\dd{\Phi^j\eval_C}$ annihilates each tangent vector $v_p \in T_p C = \mathrm{span}\qty(\pdv{x^1},\ldots, \pdv{x^k})$.
-        On the other hand, $\Phi^{-1}(0) = U \cap C$, implies 
-        $\dd{\Phi^j} \neq 0$, as the tangent vectors along the last $n-k$ coordinates $x^{k+1}, \ldots, x^n$ produce
-        \begin{equation*}
-            
-        \end{equation*}
+        We have shown that the differential $\dd{f_p}$ is orthogonal to $T^*_p C$, so, by \ref{split}, $\dd{f_p}$ lies in the image of the pullback $\Phi^*$. The Lagrange multipliers $\ell_1, \ldots, \ell_k$ are just the coordinates of $\dd{f_p}$ in the covector space $T^* \R^k \inj T^*_p M$.
     \end{proof}
 
 \end{enumerate}
