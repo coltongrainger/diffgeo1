@@ -39,8 +39,8 @@ Is it always possible to choose an outwards pointing normal vector? Nope.
     If we assume the standard orientation on $\R^n$, then computationally, we may take the iterated Riemann integrals in what ever order is useful. (\TODO, why?)
     \begin{equation*}
         \int_{\partial\paren{M}} f \dd{x} \w  \dd{y} 
-        := \dint f \dd{x} \dd{y} 
-        = \dint f \dd{y} \dd{x}.
+        := \int f \dd{x} \dd{y} 
+        = \int f \dd{y} \dd{x}.
     \end{equation*}
 \end{ex}
 
@@ -71,10 +71,13 @@ Suppose now $M \in \Man^n$ and $\omega$ is a top-form. If $\omega$ is compactly 
     \int_M \omega := \epsilon \int_{\phi(U)} \paren{\psi^{-1}}^* \omega.
 \end{equation*}
 The sign $\epsilon$ is determined according to whether or not $\phi$ is orientation preserving:
-\begin{cases}
-    $\det \phi^* < 0$ & $\epsilon = -1$,\\
-    $\det \phi^* > 0$ & $\epsilon = 1$.
-\end{cases}
+\begin{equation*}
+    \begin{cases}
+        \det \phi^* < 0 & \epsilon = -1,\\
+        \det \phi^* > 0 & \epsilon = 1.
+    \end{cases}
+\end{equation*}
+
 Since $\phi$ is a diffeomorphism, the determinant of $\phi^*$ is strictly non-zero.
 
 \begin{ex}[Low-dim manifolds]

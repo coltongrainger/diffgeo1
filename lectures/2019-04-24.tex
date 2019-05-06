@@ -7,8 +7,7 @@
 % namely, in which course will tensor products be covered? 5000/6000 level? How many problems in the problem sets? Etc.
 % It's not on the algebra syllabus.
 
-\newcommand{\om}[1]{\omega\paren{#1}} 
-\newcommand{\som}[1]{\Omega\paren{#1}} 
+\newcommand{\om}{\omega}
 
 \begin{defn}[Multi-index notation]
     \label{defn:multi_index_notation}
@@ -24,7 +23,7 @@ We can compute the action of a covector $\om$ on $f_I(x)$ \TODO. (I got lost in 
 
 \begin{equation*}
     f_I(x) = \om \mqty[\pdv{x^{i_1}} & \cdots & \pdv{x^{i_k}}] 
-\end{equation*}f_I(x)
+\end{equation*}
 
 We'll start in $\R^n$. Let $\om$ be a $k$-form, of the form,
 \begin{equation*}
@@ -38,10 +37,10 @@ The exterior derivative of $\om$ is the $k+1$-form on $\R^n$
 In $\R^2$, we have $\dd{x \dd{y}} = \dd{x} \wedge \dd{y}$.
 
 If $\om$ is a $1$-form, where $\om = f_i(x) \dd{x^i}$, then 
-\begin{equation}
+\begin{align*}
     \dd{\om} &= \dd{f_i} \wedge \dd{x^i}\\
         &= \paren{}
-\end{equation}
+\end{align*}
 
 \begin{ex}[Exterior derivative]
     \label{ex:exterior_derivative}
